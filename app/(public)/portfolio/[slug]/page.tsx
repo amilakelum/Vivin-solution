@@ -25,9 +25,10 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-  const { data: caseStudies } = await supabasePublic
-    .from("case_studies")
-    .select("slug");
+  // const { data: caseStudies } = await supabasePublic
+  //   .from("case_studies")
+  //   .select("slug");
+  const caseStudies = await getCaseStudies();
   return (caseStudies || []).map((study) => ({
     slug: study.slug,
   }));
